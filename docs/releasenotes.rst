@@ -10,6 +10,7 @@ Released on 2025/12/10.
 * Added bases truncation for synthetic photometry generator: https://github.com/gaia-dpci/GaiaXPy/pull/110
 * Improved package installer, Python requirements updated to Python >= 3.10: https://github.com/gaia-dpci/GaiaXPy/pull/130
 * Fixed slow import when Archive is unavailable: https://github.com/gaia-dpci/GaiaXPy/pull/140
+* Plots use LaTeX labels: https://github.com/gaia-dpci/GaiaXPy/issues/80
 
 Version 2.1.2
 -------------
