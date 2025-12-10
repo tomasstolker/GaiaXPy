@@ -1,7 +1,5 @@
 import re
 
-from astroquery.gaia import GaiaClass
-
 from gaiaxpy.core.server import data_release, gaia_server
 from gaiaxpy.core.version import __version__
 from .archive_reader import ArchiveReader
@@ -64,6 +62,9 @@ class QueryReader(ArchiveReader):
         return query
 
     def read(self, _data_release=data_release, _comment=f'This query was launched from within GaiaXPy {__version__}'):
+        # Import only when read is called, as this module is dependent on the Archive’s availability
+        from astroquery.gaia import GaiaClass
+
         query = self.content
         query = self._add_marker(query, _comment)
         function_name = self.function.__name__
