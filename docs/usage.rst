@@ -1,7 +1,7 @@
 Usage
 =====
 
-The package currently includes four different functionalities: a **calibrator**, a **converter**, a **synthetic photometry generator**, and a **plotter**. Two further functionalities, a **simulator** and a **linefinder**, are under development and will be released soon.
+The package currently includes four different functionalities: a **calibrator**, a **converter**, a **synthetic photometry generator**, and a **plotter**.
 
 .. role:: python(code)
    :language: python
