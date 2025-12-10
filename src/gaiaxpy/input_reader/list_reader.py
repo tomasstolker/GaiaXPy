@@ -1,5 +1,3 @@
-from astroquery.gaia import GaiaClass
-
 from gaiaxpy.core.server import data_release, gaia_server
 from .archive_reader import ArchiveReader
 from .dataframe_reader import DataFrameReader
@@ -34,6 +32,9 @@ class ListReader(ArchiveReader):
         self.disable_info = disable_info
 
     def read(self, _data_release=data_release):
+        # Import only when read is called, as this module is dependent on the Archive’s availability
+        from astroquery.gaia import GaiaClass
+
         sources = self.content
         function_name = self.function.__name__
         if function_name in not_supported_functions:
