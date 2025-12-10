@@ -12,7 +12,6 @@ license = 'BSD-3-Clause'  # SPDX identifier as a string. It must be 'license', n
 license-files = ['LICENSE']
 authors = [
     {name = 'Francesca De Angeli', email = 'fda@ast.cam.ac.uk'},
-    {name = 'Zuzanna Kostrzewa-Rutkowska'},
     {name = 'Paolo Montegriffo', email = 'paolo.montegriffo@inaf.it'},
     {name = 'Lovro Palaversa'},
     {name = 'Daniela Ruz-Mieres', email = 'dr540@ast.cam.ac.uk'},

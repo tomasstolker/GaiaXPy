@@ -48,7 +48,7 @@ def edit_default_value(app, what, name, obj, options, signature, return_annotati
 # -- Project information -----------------------------------------------------
 project = u'GaiaXPy'
 copyright = u'2025, DPAC, CU5, DPCI'
-author = u'Francesca De Angeli, Zuzanna Kostrzewa-Rutkowska, Paolo Montegriffo, Lovro Palaversa, Daniela Ruz-Mieres'
+author = u'Francesca De Angeli, Paolo Montegriffo, Lovro Palaversa, Daniela Ruz-Mieres'
 
 # The short X.Y version
 version = f'{__version__} (latest)'
