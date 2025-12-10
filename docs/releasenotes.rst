@@ -5,7 +5,7 @@ Release notes
 
 Version 2.1.3
 -------------
-To be released.
+Released on 2025/12/10.
 
 * Added bases truncation for synthetic photometry generator: https://github.com/gaia-dpci/GaiaXPy/pull/110
 * Improved package installer, Python requirements updated to Python >= 3.10: https://github.com/gaia-dpci/GaiaXPy/pull/130
