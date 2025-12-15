@@ -15,7 +15,8 @@ from ..file_parser.cast import _cast
 
 
 def generate(input_object: Union[list, Path, pd.DataFrame, str], photometric_system: Union[list, PhotometricSystem],
-             output_path: Union[Path, str] = '.', output_file: str = 'output_synthetic_photometry',
+             truncation: bool = False, output_path: Union[Path, str] = '.',
+             output_file: str = 'output_synthetic_photometry',
              output_format: str = None, save_file: bool = True, error_correction: bool = False,
              additional_columns: Optional[Union[dict, list, str]] = None, username: str = None, password: str = None) \
         -> pd.DataFrame:
@@ -30,6 +31,8 @@ def generate(input_object: Union[list, Path, pd.DataFrame, str], photometric_sys
             the archive in their continuous representation, a list of sources ids (string or long), or a pandas
             DataFrame.
         photometric_system (list/PhotometricSystem): Desired photometric system or list of photometric systems.
+        truncation (bool): Toggle truncation of the set of bases. The level of truncation to be applied is defined
+            by the recommended value in the input files.
         output_path (Path/str): Path where to save the output data.
         output_file (str): Name of the output file without extension (e.g. 'my_file').
         output_format (str): Desired output format. If no format is given, the output file format will be the same as
@@ -46,13 +49,13 @@ def generate(input_object: Union[list, Path, pd.DataFrame, str], photometric_sys
     Returns:
         DataFrame: A DataFrame of all synthetic photometry results.
     """
-    return _generate(input_object=input_object, photometric_system=photometric_system, output_path=output_path,
-                     output_file=output_file, output_format=output_format, save_file=save_file,
-                     error_correction=error_correction, additional_columns=additional_columns, username=username,
-                     password=password)
+    return _generate(input_object=input_object, photometric_system=photometric_system, truncation=truncation,
+                     output_path=output_path, output_file=output_file, output_format=output_format,
+                     save_file=save_file, error_correction=error_correction, additional_columns=additional_columns,
+                     username=username, password=password)
 
 
-def _generate(input_object: Union[list, Path, pd.DataFrame, str], photometric_system: Union[list, PhotometricSystem],
+def _generate(input_object: Union[list, Path, pd.DataFrame, str], *, photometric_system: Union[list, PhotometricSystem],
               truncation: bool = False, output_path: Union[Path, str] = '.',
               output_file: str = 'output_synthetic_photometry', output_format: str = None, save_file: bool = True,
               error_correction: bool = False, additional_columns: Optional[Union[dict, list, str]] = None,
@@ -62,8 +65,6 @@ def _generate(input_object: Union[list, Path, pd.DataFrame, str], photometric_sy
     Internal function of the calibration utility. Refer to "generate".
 
     Args:
-        truncation (bool): Toggle truncation of the set of bases. The level of truncation to be
-            applied is defined by the recommended value in the input files.
         selector (function): Function to filter AVRO records. The records returned will be the
             ones for which the function returns True. The field names used in the selector
             function should match the ones in the AVRO schema as the filter is run before any
@@ -89,7 +90,7 @@ def _generate(input_object: Union[list, Path, pd.DataFrame, str], photometric_sy
         return any([item.get_system_name() == gaia_system_name for item in _internal_photometric_system])
 
     validate_photometric_system(photometric_system)
-    validate_save_arguments(generate.__defaults__[1], output_file, generate.__defaults__[2], output_format, save_file)
+    validate_save_arguments(generate.__defaults__[2], output_file, generate.__defaults__[3], output_format, save_file)
     # Prepare systems, keep track of original systems (especially required for error_correction)
     internal_phot_system = photometric_system.copy() if isinstance(photometric_system, list) else (
         [photometric_system].copy())
