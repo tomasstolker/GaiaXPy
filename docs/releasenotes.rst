@@ -3,6 +3,13 @@ Release notes
 
 .. _releasenotes:
 
+Version 2.1.4
+-------------
+To be released.
+
+* Make generator truncation parameter available: https://github.com/gaia-dpci/GaiaXPy/pull/145
+* Add missing known issues to docs: https://github.com/gaia-dpci/GaiaXPy/pull/148
+
 Version 2.1.3
 -------------
 Released on 2025/12/10.
